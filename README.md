@@ -30,6 +30,6 @@ Prints the name of every available image in /img/ folder.
 Prints the image at the player's position
 
 ## Additionnal infos
-I've left some unused variables in global and processvoxels() for the case scenarios where something other than an emote wishes to be implemented and needs to behave differently (be saved to the map, bound to specific coords rather than the player position or be forcefully sent to all players.
+I've left some unused variables in global and processvoxels() for the case scenarios where something other than an emote wishes to be implemented and needs to behave differently (be saved to the map, bound to specific coords rather than the player position or be forcefully sent to all players.)
 
 In the case scenario where pixels need to be saved to the map, a different global dictionary must be used for the voxel processing. VOXEL_PROC_HEAVEN is left unused for that very case scenario and can be changed/defined/renamed as wished.
