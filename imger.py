@@ -1,5 +1,5 @@
 """
-Imger3.py v1.0 Public Release
+imger.py v1.0 Public Release
 
 Creator: Mile
 
