@@ -27,7 +27,7 @@ Toggles imger on and off client-side. Also adds or removes the player's name fro
 Prints the name of every available image in /img/ folder.
 
 ### /emote <name>
-Prints the image at the player's position
+Prints the image at the player's position. Emotes are not saved to the map, and thus are only visible to players provided they are connected at the same time as the user placing the emote. Anyone joining the server is always met with a clean map, to prevent spam and an easy way to clean up the map client-side.
 
 ## Additionnal infos
 I've left some unused variables in global and processvoxels() for the case scenarios where something other than an emote wishes to be implemented and needs to behave differently (be saved to the map, bound to specific coords rather than the player position or be forcefully sent to all players.)
