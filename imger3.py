@@ -20,8 +20,10 @@ from PIL import Image
 
 # USER INPUTS
 
-EMOTE_COOLDOWN = 20
+VOXEL_PROC_EMOTES = {}
+VOXEL_PROC_HEAVEN = {}
 
+EMOTE_COOLDOWN = 20
 
 # END OF USER INPUTS
 
@@ -30,9 +32,6 @@ DISABLED_USERS = []
 with open('img/userdata/DISABLED_USERS.txt', 'r') as userd:
     for name in userd:
         DISABLED_USERS.append(name.rstrip('\n'))
-
-
-VOXEL_PROC_EMOTES = {}
 
 
 def processvoxels(protocol, map, is_forced, is_emote):
@@ -75,9 +74,9 @@ def processvoxels(protocol, map, is_forced, is_emote):
 
 
 def imger(protocol, a, b, map, gn):
-    graffiti = Image.open('img/' + gn + '.png')
+    imager = Image.open('img/' + gn + '.png')
 
-    value = int(graffiti.width / 2)
+    value = int(imager.width / 2)
     voxel_selection_user = list()
 
     for a2 in range(a - value, a + value):
@@ -89,14 +88,14 @@ def imger(protocol, a, b, map, gn):
         if map.get_solid(p[0], p[1], map.get_z(p[0], p[1])):
             px = p[0] - a - value
             py = p[1] - b - value
-            if graffiti.getpixel((px, py))[0] == 0 and \
-                    graffiti.getpixel((px, py))[1] == 0 and \
-                    graffiti.getpixel((px, py))[2] == 0:
+            if imager.getpixel((px, py))[0] == 0 and \
+                    imager.getpixel((px, py))[1] == 0 and \
+                    imager.getpixel((px, py))[2] == 0:
                 continue
             else:
-                R3 = graffiti.getpixel((px, py))[0]
-                G3 = graffiti.getpixel((px, py))[1]
-                B3 = graffiti.getpixel((px, py))[2]
+                R3 = imager.getpixel((px, py))[0]
+                G3 = imager.getpixel((px, py))[1]
+                B3 = imager.getpixel((px, py))[2]
                 if R3 > 254:
                     R3 = 254
                 if G3 > 254:
@@ -112,7 +111,7 @@ def imger(protocol, a, b, map, gn):
                 VOXEL_PROC_EMOTES[p] = tuple((R3, G3, B3))
     iter = 0.0
     count = 0
-    while count < graffiti.width * graffiti.height:
+    while count < imager.width * imager.height:
         callLater(iter, processvoxels, protocol, map, 0, 1)
         iter += 0.005
         count += 1
@@ -200,14 +199,10 @@ def apply_script(protocol, connection, config):
 
         def __init__(self, *args, **kwargs):
             connection.__init__(self, *args, **kwargs)
-            self.is_img = True
+            self.is_img = False
             self.emote_time = 0
 
         def on_spawn(self, pos):
-            if self.is_img and "Voxlap" in self.client_string:
-                self.is_img = False
-            elif self.is_img and self.name in DISABLED_USERS:
-                self.is_img = False
             callLater(5, client_check, self)
             return connection.on_spawn(self, pos)
 
