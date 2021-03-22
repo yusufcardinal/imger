@@ -7,7 +7,7 @@ This plugin allows users to print images on the map, with emotes implemented by 
 Pillow, version > 5.4.0
 
 ## Installation guide
-Add imger3.py to your scripts folder and modify config.toml accordingly. The /img/ folder needs to be placed at the root of your piqueserver installation, alongside the already existing "game_modes", "data", "core_commands", etc.
+Add imger.py to your scripts folder and modify config.toml accordingly. The /img/ folder needs to be placed at the root of your piqueserver installation, alongside the already existing "game_modes", "data", "core_commands", etc.
 
 ## Adding images
 Once the server is running, the script will pick up all files dropped into /img/ automatically. Images can then be added at your leisure.
