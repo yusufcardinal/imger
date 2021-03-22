@@ -17,6 +17,8 @@ Images should respect the following conditions for the plugin to behave properly
 - Be in .png format
 - Use pure black for transparency
 
+(Images up to 32x32 may be printed with no noticeable lag on the server. However, 64x64 may dip the tps of less fortunate players, and up to 128x128 will flat-out crash some people. It is up to the server administrator to be smart with their image sizes.)
+
 ## Usage and commands
 ### /img
 Toggles imger on and off client-side. Also adds or removes the player's name from DISABLED_USERS.txt in /img/userdata/ so the server remembers their favored setting.
